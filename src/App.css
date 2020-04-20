@@ -6,22 +6,3 @@
 	width: 1200px;
 	margin: 0 auto;
 }
-
-.header {
-	grid-area: header;
-	background-color: green;
-}
-
-.header img {
-	width: 20px;
-}
-
-.nav {
-	grid-area: nav;
-	background-color: indigo;
-}
-
-.content {
-	background-color: khaki;
-	grid-area: content;
-}

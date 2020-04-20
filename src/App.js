@@ -8,7 +8,7 @@ const App = () => {
 	return (
 		<div className="app-wrapper">
 			<Header />
-			<Nav sd={Header} />
+			<Nav />
 			<Profile />
 		</div>
 	);
