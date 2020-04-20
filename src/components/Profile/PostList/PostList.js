@@ -6,7 +6,7 @@ const MyPosts = () => {
 	return (
 		<div className={styles.posts}>
 			My posts
-			<Post />
+			<Post message="HI!" />
 		</div>
 	);
 };
