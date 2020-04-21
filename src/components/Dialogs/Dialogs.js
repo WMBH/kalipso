@@ -2,31 +2,33 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Dialogs.module.css';
 
+const DialogItem = (props) => {
+	return (
+		<div className={`${styles.dialog} ${styles.active}`}>
+			<NavLink to={`/dialogs/${props.id}`}>{props.name}</NavLink>
+		</div>
+	);
+};
+
+const Message = (props) => {
+	return <div className={styles.message}>{props.message}</div>;
+};
+
 const Dialogs = (props) => {
 	return (
 		<div className={styles.dialogs}>
 			<div className={styles.dialogsItems}>
-				<div className={`${styles.dialog} ${styles.active}`}>
-					<NavLink to="/dialogs/1">Dymich</NavLink>
-				</div>
-				<div className={styles.dialog}>
-					<NavLink to="/dialogs/2">Dymich</NavLink>
-				</div>
-				<div className={styles.dialog}>
-					<NavLink to="/dialogs/4">Dymich</NavLink>
-				</div>
-				<div className={styles.dialog}>
-					<NavLink to="/dialogs/5">Dymich</NavLink>
-				</div>
-				<div className={styles.dialog}>
-					<NavLink to="/dialogs/6">Dymich</NavLink>
-				</div>
+				<DialogItem name="Dymich" id="1" />
+				<DialogItem name="Alena" id="2" />
+				<DialogItem name="KOzel" id="3" />
+				<DialogItem name="Deda" id="4" />
+				<DialogItem name="Dyadya" id="5" />
 			</div>
 			<div className={styles.messages}>
-				<div className={styles.message}>privet</div>
-				<div className={styles.message}>kak dela</div>
-				<div className={styles.message}>kak pogoda</div>
-				<div className={styles.message}>azaza</div>
+				<Message message="Hi" />
+				<Message message="how are u" />
+				<Message message="how azaza" />
+				<Message message="how azaza" />
 			</div>
 		</div>
 	);

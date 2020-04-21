@@ -4,9 +4,17 @@ import styles from './PostList.module.css';
 
 const MyPosts = () => {
 	return (
-		<div className={styles.posts}>
-			My posts
-			<Post message="HI!" />
+		<div className={styles.postsBlock}>
+			<h3>My posts</h3>
+			<div>
+				<textarea name="" id="" cols="30" rows="10" />
+				<button>s</button>
+			</div>
+			<div className="posts">
+				<Post message="HI!" />
+				<Post message="HI!" />
+				<Post message="HI!" />
+			</div>
 		</div>
 	);
 };
