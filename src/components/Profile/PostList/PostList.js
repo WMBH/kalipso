@@ -2,6 +2,8 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './PostList.module.css';
 
+let PostsData = [ { id: 1, post: 'Hi' }, { id: 2, post: 'HI!' }, { id: 3, post: 'HI!' }, { id: 4, post: 'HI!' } ];
+
 const MyPosts = () => {
 	return (
 		<div className={styles.postsBlock}>
