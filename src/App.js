@@ -21,6 +21,8 @@ let messagesData = [
 	{ id: 4, message: 'how azaza' }
 ];
 
+let postsData = [ { id: 1, post: 'Hi' }, { id: 2, post: 'HI!' }, { id: 3, post: 'HI!' }, { id: 4, post: 'HI!' } ];
+
 const App = () => {
 	return (
 		<div className="app-wrapper">
@@ -31,7 +33,7 @@ const App = () => {
 					path="/dialogs"
 					render={() => <Dialogs dialogsData={dialogsData} messagesData={messagesData} />}
 				/>
-				<Route path="/profile" render={() => <Profile />} />
+				<Route path="/profile" render={() => <Profile postsData={postsData} />} />
 			</div>
 		</div>
 	);

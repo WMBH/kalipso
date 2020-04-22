@@ -4,7 +4,7 @@ import styles from './Post.module.css';
 function Post(props) {
 	return (
 		<div>
-			<div className={styles.item}>{props.message}</div>
+			<div className={styles.item}>{props.post}</div>
 		</div>
 	);
 }
