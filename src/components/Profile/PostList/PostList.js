@@ -2,7 +2,9 @@ import React from 'react';
 import Post from './Post/Post';
 import styles from './PostList.module.css';
 
-let PostsData = [ { id: 1, post: 'Hi' }, { id: 2, post: 'HI!' }, { id: 3, post: 'HI!' }, { id: 4, post: 'HI!' } ];
+let postsData = [ { id: 1, post: 'Hi' }, { id: 2, post: 'HI!' }, { id: 3, post: 'HI!' }, { id: 4, post: 'HI!' } ];
+
+let newPostsData = postsData.map((post) => <Post id={post.id} post={post.post} />);
 
 const MyPosts = () => {
 	return (
@@ -12,11 +14,7 @@ const MyPosts = () => {
 				<textarea name="" id="" cols="30" rows="10" />
 				<button>s</button>
 			</div>
-			<div className="posts">
-				<Post message="HI!" />
-				<Post message="HI!" />
-				<Post message="HI!" />
-			</div>
+			<div className="posts">\ {newPostsData}</div>
 		</div>
 	);
 };
