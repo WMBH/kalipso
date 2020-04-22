@@ -6,14 +6,32 @@ import Dialogs from './components/Dialogs/Dialogs';
 import './App.css';
 import { Route } from 'react-router-dom';
 
+let dialogsData = [
+	{ id: 1, name: 'Dymich' },
+	{ id: 2, name: 'Alena' },
+	{ id: 3, name: 'KOzel' },
+	{ id: 4, name: 'Deda' },
+	{ id: 5, name: 'Dyadya' }
+];
+
+let messagesData = [
+	{ id: 1, message: 'Hi' },
+	{ id: 2, message: 'how are u' },
+	{ id: 3, message: 'how azaza' },
+	{ id: 4, message: 'how azaza' }
+];
+
 const App = () => {
 	return (
 		<div className="app-wrapper">
 			<Header />
 			<Nav />
 			<div className="app-wrapper-content">
-				<Route path="/dialogs" component={Dialogs} />
-				<Route path="/profile" component={Profile} />
+				<Route
+					path="/dialogs"
+					render={() => <Dialogs dialogsData={dialogsData} messagesData={messagesData} />}
+				/>
+				<Route path="/profile" render={() => <Profile />} />
 			</div>
 		</div>
 	);
