@@ -8,7 +8,7 @@ let initialState = {
 		{ id: 3, message: 'Blabla', likesCount: 11 },
 		{ id: 4, message: 'Dada', likesCount: 11 }
 	],
-	newPostText: 'it-kamasutra.com'
+	newPostText: ''
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -19,12 +19,19 @@ const profileReducer = (state = initialState, action) => {
 				message: state.newPostText,
 				likesCount: 0
 			};
-			state.posts.push(newPost);
-			state.newPostText = '';
-			return state;
+
+			return {
+				...state,
+				posts: [ ...state.posts, newPost ],
+				newPostText: ''
+			};
+
 		case UPDATE_NEW_POST_TEXT:
-			state.newPostText = action.newText;
-			return state;
+			return {
+				...state,
+				newPostText: action.newText
+			};
+
 		default:
 			return state;
 	}
