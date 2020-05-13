@@ -10,7 +10,7 @@ const usersReducer = (state = initialState, action) => {
 		case FOLLOW_TOGGLE:
 			return {
 				...state,
-				users: state.users.map((u) => (u.id === action.userId ? { ...u, followed: !state.followed } : u))
+				users: state.users.map((u) => ({ ...u, followed: !state.followed }))
 			};
 		case SET_USERS: {
 			return { ...state, users: [ ...state.users, ...action.users ] };
