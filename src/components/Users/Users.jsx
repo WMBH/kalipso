@@ -4,27 +4,54 @@ import * as axios from 'axios';
 import userPhoto from '../../assets/images/AvatarPlaceholder.jpg';
 
 class Users extends Component {
-	constructor(props) {
-		super(props);
-		if (this.props.users.length === 0) {
-			axios.get('https://social-network.samuraijs.com/api/1.0/users').then((res) => {
+	componentDidMount() {
+		axios
+			.get(
+				`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props
+					.pageSize}`
+			)
+			.then((res) => {
 				this.props.setUsers(res.data.items);
+				this.props.setTotalUsersCount(res.data.totalCoutn);
 			});
-		}
 	}
 
+	onPageChanged = (pageNumber) => {
+		this.props.setCurrentPage(pageNumber);
+		axios
+			.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+			.then((res) => {
+				this.props.setUsers(res.data.items);
+			});
+	};
+
 	render() {
+		let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+		let pages = [];
+		for (let i = 1; i <= pagesCount; i++) {
+			pages.push(i);
+		}
 		return (
 			<div>
-				<button onClick={this.getUsers}>Get Users</button>
+				<div>
+					{pages.map((page) => {
+						return (
+							<span
+								className={this.props.currentPage === page ? styles.selectedPage : ''}
+								onClick={(e) => {
+									this.onPageChanged(page);
+								}}
+							>
+								{page}
+							</span>
+						);
+					})}
+				</div>
 				{this.props.users.map((u) => (
 					<div key={u.id}>
 						<span>
 							<div>
-								<img
-									src={u.photos.small != null ? u.photos.small : userPhoto}
-									className={styles.userPhoto}
-								/>
+								<img src={userPhoto} className={styles.userPhoto} />
 							</div>
 							<div>
 								{u.followed ? (
