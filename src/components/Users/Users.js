@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './users.module.css';
+import { usersAPI } from '../../api/api';
 import userPhoto from '../../assets/images/AvatarPlaceholder.jpg';
 import { NavLink } from 'react-router-dom';
 import * as axios from 'axios';
@@ -41,42 +42,18 @@ let Users = (props) => {
 						<div>
 							{u.followed ? (
 								<button
+									disabled={props.followingInProgress.some((id) => id === u.id)}
 									onClick={() => {
-										axios
-											.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-												withCredentials: true,
-												headers: {
-													"API-KEY": '26d690f8-c7bc-4d44-bdf5-6d28a6f0e28d'
-												}
-											})
-											.then((res) => {
-												if (res.data.resultCode == 0) {
-													props.unfollow(u.id);
-												}
-											});
+										props.unfollow(u.id);
 									}}
 								>
 									Unfollow
 								</button>
 							) : (
 								<button
+									disabled={props.followingInProgress.some((id) => id === u.id)}
 									onClick={() => {
-										axios
-											.post(
-												`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-												{},
-												{
-													withCredentials: true,
-													headers: {
-														"API-KEY": '26d690f8-c7bc-4d44-bdf5-6d28a6f0e28d'
-													}
-												}
-											)
-											.then((res) => {
-												if (res.data.resultCode == 0) {
-													props.follow(u.id);
-												}
-											});
+										props.follow(u.id);
 									}}
 								>
 									Follow
