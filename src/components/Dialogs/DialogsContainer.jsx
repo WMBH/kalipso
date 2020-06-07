@@ -22,14 +22,6 @@ let mapDispatchToProps = (dispatch) => {
 
 let AuthRedirectComponent = withAuthRedirect(Dialogs);
 
-let mapStateToPropsForRedirect = (state) => {
-	return {
-		isAuth: state.auth.isAuth
-	};
-};
-
-AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponent);
-
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
 
 export default DialogsContainer;
