@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { follow, setCurrentPage, unfollow, toggleFollowingProgress, getUsers } from '../../redux/users-reducer';
 import Users from './Users';
-import { Redirect } from 'react-router-dom';
-
 class UsersContainer extends React.Component {
 	componentDidMount() {
 		this.props.getUsers(this.props.currentPage, this.props.pageSize);
